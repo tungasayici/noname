@@ -16,4 +16,14 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\NoName.Common.Foundation\NoName.Common.Foundation.csproj" />
+    <ProjectReference Include="..\Common\NoName.Localization\NoName.Localization.csproj" />
+    <ProjectReference Include="..\Common\NoName.Model\NoName.Model.csproj" />
+    <ProjectReference Include="..\Core\NoName.Core.Exception\NoName.Core.Exception.csproj" />
+    <ProjectReference Include="..\Core\NoName.Core.NetFoundation\NoName.Core.NetFoundation.csproj" />
+    <ProjectReference Include="..\Service\NoName.Core.Service\NoName.Core.Service.csproj" />
+    <ProjectReference Include="..\Service\NoName.Service\NoName.Service.csproj" />
+  </ItemGroup>
+
 </Project>

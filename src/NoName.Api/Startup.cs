@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using NoName.Core.NetFoundation;
+using NoName.Core.Service;
+using NoName.Model.Account;
+using NoName.Service;
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace NoName.Api
 {
@@ -20,13 +24,42 @@ namespace NoName.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<TokenAuthenticationConfigSection>(Configuration.GetSection(nameof(TokenAuthenticationConfigSection)));
+
             services.AddMvc();
+
+            services.AddTransient<IAccountService, AccountService>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration[$"{nameof(TokenAuthenticationConfigSection)}:{nameof(TokenAuthenticationConfigSection.Issuer)}"],
+                    ValidAudience = Configuration[$"{nameof(TokenAuthenticationConfigSection)}:{nameof(TokenAuthenticationConfigSection.Issuer)}"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"{nameof(TokenAuthenticationConfigSection)}:{nameof(TokenAuthenticationConfigSection.SecretKey)}"]))
+                };
+
+                options.SecurityTokenValidators.Clear();
+                options.SecurityTokenValidators.Add(new CustomJwtSecurityTokenHandler());
+
+                var serviceProvider = services.BuildServiceProvider();
+                
+                options.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = async context =>
+                    {
+                        await TokenValidatedEvent(context);
+                    }
+                };
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -34,7 +67,15 @@ namespace NoName.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseMvc();
+        }
+
+        private async Task TokenValidatedEvent(TokenValidatedContext context)
+        {
+            var userId = Convert.ToInt64(context.Principal.Claims.First(f => f.Type == Common.Foundation.Constants.Claim.UserId).Value);
+
+
         }
     }
 }
