@@ -120,4 +120,22 @@
   <data name="InvalidGrantType" xml:space="preserve">
     <value>Invalid Grant Type</value>
   </data>
+  <data name="MemberNotFound" xml:space="preserve">
+    <value>Member Not Found</value>
+  </data>
+  <data name="NeedMemberIdentifier" xml:space="preserve">
+    <value>Need Member Identifier</value>
+  </data>
+  <data name="NeedPassword" xml:space="preserve">
+    <value>Need Password</value>
+  </data>
+  <data name="NeedRefreshToken" xml:space="preserve">
+    <value>Need Refresh Token</value>
+  </data>
+  <data name="RefreshTokenExpired" xml:space="preserve">
+    <value>Refresh Token Expired</value>
+  </data>
+  <data name="RefreshTokenNotFound" xml:space="preserve">
+    <value>Refresh Token Not Found</value>
+  </data>
 </root>

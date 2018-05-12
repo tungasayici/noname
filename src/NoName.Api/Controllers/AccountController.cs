@@ -18,12 +18,12 @@ namespace NoName.Api.Controllers
             _accountService = accountService;
         }
 
-        [Route("Token")]
+        [Route("Auth")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<TokenResponseModel> Token([FromBody]TokenRequestModel model)
+        public async Task<AuthResponseModel> Auth([FromBody]AuthRequestModel model)
         {
-            return await _accountService.Token(model);
+            return await _accountService.Auth(model);
         }
 
         [Route("GetUser")]

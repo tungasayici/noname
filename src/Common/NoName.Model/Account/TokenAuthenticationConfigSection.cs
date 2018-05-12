@@ -6,6 +6,8 @@
 
         public string Issuer { get; set; }
 
-        public int Expiration { get; set; }
+        public int AccessTokenExpiration { get; set; }
+
+        public int RefreshTokenExpiration { get; set; }
     }
 }

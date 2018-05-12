@@ -9,7 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,10 +19,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\NoName.Common.Foundation\NoName.Common.Foundation.csproj" />
+    <ProjectReference Include="..\Common\NoName.Enum\NoName.Enum.csproj" />
     <ProjectReference Include="..\Common\NoName.Localization\NoName.Localization.csproj" />
     <ProjectReference Include="..\Common\NoName.Model\NoName.Model.csproj" />
     <ProjectReference Include="..\Core\NoName.Core.Exception\NoName.Core.Exception.csproj" />
     <ProjectReference Include="..\Core\NoName.Core.NetFoundation\NoName.Core.NetFoundation.csproj" />
+    <ProjectReference Include="..\Data\NoName.Core.Repository\NoName.Core.Repository.csproj" />
+    <ProjectReference Include="..\Data\NoName.Data.Entity\NoName.Data.Entity.csproj" />
+    <ProjectReference Include="..\Data\NoName.Data\NoName.Data.csproj" />
+    <ProjectReference Include="..\Data\NoName.Repository\NoName.Repository.csproj" />
     <ProjectReference Include="..\Service\NoName.Core.Service\NoName.Core.Service.csproj" />
     <ProjectReference Include="..\Service\NoName.Service\NoName.Service.csproj" />
   </ItemGroup>

@@ -5,6 +5,6 @@ namespace NoName.Core.Service
 {
     public interface IAccountService
     {
-        Task<TokenResponseModel> Token(TokenRequestModel model);
+        Task<AuthResponseModel> Auth(AuthRequestModel model);
     }
 }

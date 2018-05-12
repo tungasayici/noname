@@ -68,5 +68,59 @@ namespace NoName.Localization {
                 return ResourceManager.GetString("InvalidGrantType", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Member Not Found.
+        /// </summary>
+        public static string MemberNotFound {
+            get {
+                return ResourceManager.GetString("MemberNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need Member Identifier.
+        /// </summary>
+        public static string NeedMemberIdentifier {
+            get {
+                return ResourceManager.GetString("NeedMemberIdentifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need Password.
+        /// </summary>
+        public static string NeedPassword {
+            get {
+                return ResourceManager.GetString("NeedPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need Refresh Token.
+        /// </summary>
+        public static string NeedRefreshToken {
+            get {
+                return ResourceManager.GetString("NeedRefreshToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh Token Expired.
+        /// </summary>
+        public static string RefreshTokenExpired {
+            get {
+                return ResourceManager.GetString("RefreshTokenExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh Token Not Found.
+        /// </summary>
+        public static string RefreshTokenNotFound {
+            get {
+                return ResourceManager.GetString("RefreshTokenNotFound", resourceCulture);
+            }
+        }
     }
 }

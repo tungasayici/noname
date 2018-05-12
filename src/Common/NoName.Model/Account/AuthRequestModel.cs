@@ -1,10 +1,12 @@
 ﻿namespace NoName.Model.Account
 {
-    public class TokenRequestModel
+    public class AuthRequestModel
     {
-        public string Email { get; set; }
+        public string MemberIdentifier { get; set; }
 
         public string Password { get; set; }
+
+        public string refresh_token { get; set; }
 
         public string grant_type { get; set; }
     }

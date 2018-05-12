@@ -20,6 +20,13 @@ namespace NoName.Common.Foundation
         {
             public static readonly string MEMBER_NOT_FOUND = nameof(MEMBER_NOT_FOUND);
             public static readonly string INVALID_GRANT_TYPE = nameof(INVALID_GRANT_TYPE);
+            public static readonly string REFRESH_TOKEN_NOT_FOUND = nameof(REFRESH_TOKEN_NOT_FOUND);
+            public static readonly string REFRESH_TOKEN_EXPIRED = nameof(REFRESH_TOKEN_EXPIRED);
+        }
+
+        public static class Common
+        {
+            public static readonly string DefaultConnection = nameof(DefaultConnection);
         }
     }
 }
